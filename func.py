@@ -7,7 +7,7 @@ def operation_math():
     valor e segundo valor.
     :return: Retorna uma lista com os dados do calculo
     """
-    operations = randint(1, 4)
+    operations = randint(1, 3)
     number_one = randint(1, 100)
     number_two = randint(1, 100)
 
@@ -15,16 +15,7 @@ def operation_math():
         result = number_one + number_two
     elif operations == 2:
         result = number_one - number_two
-    elif operations == 3:
-        result = number_one * number_two
     else:
-        if number_one % number_two == 0 and number_one != number_two:
-            result = int(number_one / number_two)
-        else:
-            while True:
-                number_one = randint(1, 100)
-                if number_one % number_two == 0 and number_one != number_two:
-                    result = int(number_one / number_two)
-                    break
+        result = number_one * number_two
 
     return [operations, number_one, number_two, result]
