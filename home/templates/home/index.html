@@ -41,12 +41,15 @@
 <body>
     <section>
         <div class="card" {% if acertou == 1 %}style="box-shadow: 0 0 20px #3cff00;"{% elif acertou == 2 %}style="box-shadow: 0 0 20px red;"{% else %}{% endif %}>
-            <div style="text-align: left;">
+            <div style="text-align: left; margin: 0;">
                 <button type="button" class="btn btn-primary btn-light" data-toggle="modal" data-target="#exampleModal{{ user.id }}" style="margin: 15px; background-color: white; width: 20px; margin: 0px;">
                     <img src="https://png.pngtree.com/png-vector/20190120/ourlarge/pngtree-info-vector-icon-png-image_470297.jpg" width="15px">
                 </button>
+                {% if pontuacao > 0 %}
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvo7VNtD1Hvl7bDJq_mZAZ-cyoqPyJz7mQ-w&usqp=CAU" width="15px" style="padding-top: 3px;">
+                    <p style="display: inline-block; margin-left: -2px; text-align: left; font-size: 11px;">{{ pontuacao }}</p>
+                {% endif %}
             </div>
-
 
             <strong>{{ operation.1 }} {{ operation.0 }} {{ operation.2 }}</strong>
             <div class="modal fade" id="exampleModal{{ user.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -62,13 +65,18 @@
                       Este site se trata de um jogo educacional onde você precisa acertar o máximo de cálculos matemáticos possíveis.
                         <br>
                         <br>
-                      ▸ Os cálculos são gerados aleatoriamente, boa sorte!
-                      <br>
-                      ▸ Tente acertar o maximo que conseguir!
-                      <br>
-                      ▸ Se a sombra do bloco estiver verde, você acertou.
-                      <br>
-                      ▸ Se a sombra do bloco estiver vermelha, você errou.
+                      <div style="text-align: left;">
+                          ▸ Os cálculos são gerados aleatoriamente, boa sorte!
+                          <br>
+                          ▸ Tente acertar o maximo que conseguir!
+                          <br>
+                          ▸ Se a sombra do bloco estiver verde, você acertou.
+                          <br>
+                          ▸ Se a sombra do bloco estiver vermelha, você errou.
+                          <br>
+                          ▸ O icone <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvo7VNtD1Hvl7bDJq_mZAZ-cyoqPyJz7mQ-w&usqp=CAU" width="10px">
+                          informa quantas vezes seguidas você acertou.
+                      </div>
                   </div>
                   <div class="modal-header">
                     <h5 class="modal-title">Contatos e links</h5>
