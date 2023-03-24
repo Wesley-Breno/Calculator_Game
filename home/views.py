@@ -56,16 +56,22 @@ def home(request):
 
     resposta = request.POST.get('resposta_usuario')
 
-    if int(resposta) == int(str(request.COOKIES.get('resposta_anterior')).split('.')[0]):
-        dicionario['acertou'] = 1
-        pontuacao_atual = int(request.COOKIES.get(COOKIE_NAME, 0))
-        nova_pontuacao = pontuacao_atual + 1
-        dicionario['pontuacao'] = nova_pontuacao
+    try:
+        if int(resposta) == int(str(request.COOKIES.get('resposta_anterior')).split('.')[0]):
+            dicionario['acertou'] = 1
+            pontuacao_atual = int(request.COOKIES.get(COOKIE_NAME, 0))
+            nova_pontuacao = pontuacao_atual + 1
+            dicionario['pontuacao'] = nova_pontuacao
 
-        # Define o novo valor do cookie com a nova pontuação
-        response = render(request, 'home/index.html', dicionario)
-        response.set_cookie(COOKIE_NAME, nova_pontuacao, max_age=86400)
-    else:
+            # Define o novo valor do cookie com a nova pontuação
+            response = render(request, 'home/index.html', dicionario)
+            response.set_cookie(COOKIE_NAME, nova_pontuacao, max_age=86400)
+        else:
+            pontuacao_atual = int(request.COOKIES.get(COOKIE_NAME, 0))
+            nova_pontuacao = 0
+            dicionario['acertou'] = 2
+            dicionario['pontuacao'] = nova_pontuacao
+    except:
         pontuacao_atual = int(request.COOKIES.get(COOKIE_NAME, 0))
         nova_pontuacao = 0
         dicionario['acertou'] = 2
