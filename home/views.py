@@ -22,8 +22,10 @@ def home(request):
             sinal = '+'
         elif operation[0] == 2:
             sinal = '-'
-        else:
+        elif operation[0] == 3:
             sinal = 'x'
+        else:
+            sinal = '/'
 
         dicionario['operation'] = [sinal, operation[1], operation[2], operation[3]]
 
@@ -54,7 +56,7 @@ def home(request):
 
     resposta = request.POST.get('resposta_usuario')
 
-    if resposta == request.COOKIES.get('resposta_anterior'):
+    if int(resposta) == int(str(request.COOKIES.get('resposta_anterior')).split('.')[0]):
         dicionario['acertou'] = 1
         pontuacao_atual = int(request.COOKIES.get(COOKIE_NAME, 0))
         nova_pontuacao = pontuacao_atual + 1
@@ -74,8 +76,10 @@ def home(request):
         sinal = '+'
     elif operation[0] == 2:
         sinal = '-'
-    else:
+    elif operation[0] == 3:
         sinal = 'x'
+    else:
+        sinal = '/'
 
     dicionario['operation'] = [sinal, operation[1], operation[2], operation[3]]
 
