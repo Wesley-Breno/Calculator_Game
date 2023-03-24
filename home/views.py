@@ -56,10 +56,8 @@ def home(request):
         sinal = '+'
     elif operation[0] == 2:
         sinal = '-'
-    elif operation[0] == 3:
-        sinal = 'x'
     else:
-        sinal = '/'
+        sinal = 'x'
 
     dicionario['operation'] = [sinal, operation[1], operation[2], operation[3]]
     resposta_anterior = operation[3]
