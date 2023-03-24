@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Pontuacoe
 from func import operation_math
 from django.contrib import messages
-
+# :)
 resposta_anterior = 0
 
 
