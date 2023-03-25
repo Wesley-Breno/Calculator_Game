@@ -34,14 +34,14 @@ def home(request):
         # Verifica se o cookie com a pontuação já existe, se não, define a pontuação inicial como 0
         if COOKIE_NAME not in request.COOKIES:
             response = render(request, 'home/index.html', dicionario)
-            response.set_cookie(COOKIE_NAME, 0, max_age=86400)
-            response.set_cookie('resposta_anterior', operation[3], max_age=86400)
+            response.set_cookie(COOKIE_NAME, 0, max_age=86400, secure=True, httponly=True)
+            response.set_cookie('resposta_anterior', operation[3], max_age=86400, secure=True, httponly=True)
             return response
 
         # Se o cookie já existir, renderiza a página normalmente
         dicionario['pontuacao'] = int(request.COOKIES.get(COOKIE_NAME, 0))
         response = render(request, 'home/index.html', dicionario)
-        response.set_cookie('resposta_anterior', operation[3], max_age=86400)
+        response.set_cookie('resposta_anterior', operation[3], max_age=86400, secure=True, httponly=True)
         return response
 
     dicionario = {}
@@ -65,7 +65,7 @@ def home(request):
 
             # Define o novo valor do cookie com a nova pontuação
             response = render(request, 'home/index.html', dicionario)
-            response.set_cookie(COOKIE_NAME, nova_pontuacao, max_age=86400)
+            response.set_cookie(COOKIE_NAME, nova_pontuacao, max_age=86400, secure=True, httponly=True)
         else:
             pontuacao_atual = int(request.COOKIES.get(COOKIE_NAME, 0))
             nova_pontuacao = 0
@@ -90,6 +90,6 @@ def home(request):
     dicionario['operation'] = [sinal, operation[1], operation[2], operation[3]]
 
     response = render(request, 'home/index.html', dicionario)
-    response.set_cookie('pontuacao', nova_pontuacao, max_age=86400)
-    response.set_cookie('resposta_anterior', operation[3], max_age=86400)
+    response.set_cookie('pontuacao', nova_pontuacao, max_age=86400, secure=True, httponly=True)
+    response.set_cookie('resposta_anterior', operation[3], max_age=86400, secure=True, httponly=True)
     return response
