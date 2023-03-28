@@ -106,10 +106,9 @@ def home(request):
             return response
 
     else:
-        global cont
-        if cont == 0:
-            cont += 1
+        resposta = request.POST.get('resposta_usuario')
 
+        if resposta is None:
             operation = operation_math()
             if operation[0] == 1:
                 sinal = '+'
@@ -124,8 +123,6 @@ def home(request):
             resposta_anterior_sem_cookie = operation[3]
 
             return render(request, 'home/index.html', dicionario)
-
-        resposta = request.POST.get('resposta_usuario')
 
         if int(resposta) == resposta_anterior_sem_cookie:
             dicionario['acertou'] = 1
