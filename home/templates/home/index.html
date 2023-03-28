@@ -31,7 +31,6 @@
         }
         .btn.btn-primary{
             background-color: #3C5FA6;
-            height: 35px;
         }
         .btn.btn-primary.btn-light{
             padding-right: 20px;
@@ -40,6 +39,55 @@
 </head>
 <body>
     <section>
+        {% if primeira_vez_no_site %}
+        <div class="card">
+          <div class="card-body">
+            <h5>Bem vindo ao Calculator</h5>
+            <p>Utilizamos cookies para melhorar o desempenho em suas questões matemáticas.<br>
+              <a type="button" href="#" data-toggle="modal" data-target="#exampleModal{{ user.id }}">
+                  <small>Mais informações</small>
+                </a>
+
+                <div class="modal fade" id="exampleModal{{ user.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <h5>Informações sobre a utilização de cookies</h5>
+                          <hr>
+                          <h6>Oque estará disponível se eu concordar com a utilização de cookies?</h6>
+                          <small align="left">
+                              Ao concordar com a utilização de cookies, você confirmará que sera salvo em seu navegador,
+                              a sua pontuação e sua questão que você esta fazendo no momento. Ao utilizar os cookies
+                              você poderá ver sua pontuação de sequência de acertos e assim poder analisar o seu
+                              desempenho com o uso dos seus pontos.
+                          </small>
+                          <br>
+                          <br>
+                          <h6>Os cookies ocupam muito espaço no meu navegador?</h6>
+                          <small align="left">
+                              Com certeza não! Os cookies são apenas pequenos arquivos aonde iremos salvar sua pontuação
+                              e a questão que falta para você responder! Depois de 24 horas os seus cookies serão
+                              apagados automaticamente.
+                          </small>
+                          <br>
+                          <br>
+                          <h6>Oque estará disponivel se eu NÃO concordar com a utilização de cookies?</h6>
+                          <small align="left">
+                              Ao discordar com a utilização de cookies, você ainda ira poder usar o nosso site. Porem
+                              você ficara limitado a apenas responder às questões e não ira ter uma pontuação de
+                              sequência de acertos.
+                          </small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <form method="POST">
+                {% csrf_token %}
+                <button type="submit" value="True" name="concorda_com_cookies" class="btn btn-primary btn-sm">Concordo</button>
+                <button type="submit" value="False" name="concorda_com_cookies" class="btn btn-secondary btn-sm">Discordo</button>
+            </form>
+        </div>
+        {% else %}
         <div class="card" {% if acertou == 1 %}style="box-shadow: 0 0 20px #3cff00;"{% elif acertou == 2 %}style="box-shadow: 0 0 20px red;"{% else %}{% endif %}>
             <div style="text-align: left; margin: 0;">
                 <button type="button" class="btn btn-primary btn-light" data-toggle="modal" data-target="#exampleModal{{ user.id }}" style="margin: 15px; background-color: white; width: 20px; margin: 0px;">
@@ -74,8 +122,10 @@
                           <br>
                           ▸ Se a sombra do bloco estiver vermelha, você errou.
                           <br>
-                          ▸ O icone <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvo7VNtD1Hvl7bDJq_mZAZ-cyoqPyJz7mQ-w&usqp=CAU" width="10px">
-                          informa quantas vezes seguidas você acertou.
+                          {% if pontuacao %}
+                              ▸ O icone <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvo7VNtD1Hvl7bDJq_mZAZ-cyoqPyJz7mQ-w&usqp=CAU" width="10px">
+                              informa quantas vezes seguidas você acertou.
+                          {% endif %}
                       </div>
                   </div>
                   <div class="modal-header">
@@ -107,6 +157,7 @@
                 </form>
             </div>
         </div>
+        {% endif %}
     </section>
     <script src="{% static 'home/vendor/jquery/jquery.slim.min.js' %}"></script>
     <script src="{% static 'home/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
