@@ -9,28 +9,28 @@
 </p>
 
 <p align="center">
-  Clique <a href="https://web-production-f1514.up.railway.app/" target="_blank">aqui</a> para acessar o site.
+  Click <a href="https://web-production-f1514.up.railway.app/" target="_blank">here</a> to access the website.
 </p>
 
 <h3 align="center">
-  Sobre
+  About
 </h3>
 <p align="center">
-  Calculator é um jogo educacional para melhorar o seu raciocínio usando questões de matemática com os operadores fundamentais. Com o Calculator, você poderá treinar 
-  suas habilidades em matemática e raciocínio, adquirindo um raciocínio mais rápido e eficaz.
+  Calculator is an educational game to improve your reasoning using math questions with fundamental operators. With Calculator you will be able to train
+  your skills in mathematics and reasoning, acquiring faster and more effective reasoning.
 </p>
 
 <h3 align="center">
-  Como funciona?
+  How it works?
 </h3>
 <p>
-  ▸ Você entrará no site e a partir disso, já poderá responder diversas questões de matemática.<br>
-  ▸ As questões variam entre adição, subtração, multiplicação e divisão.<br>
-  ▸ O jogo contém um algoritmo de pontuação de sequências de acertos. Quanto mais questões você acertar, mais sua pontuação aumentará.
+  ▸ You will enter the website and from there, you will be able to answer several math questions.<br>
+  ▸ Questions range from addition, subtraction, multiplication and division.<br>
+  ▸ The game contains a hit streak scoring algorithm. The more questions you get right, the more your score will increase.
 </p>
 
 <h3 align="center">
-  Tecnologias usadas
+  Technologies used
 </h3>
 <p align="center">
   <a href='https://www.python.org/' target='_blank'>
